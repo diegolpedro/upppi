@@ -1,12 +1,12 @@
 FROM python:3.10
 
 WORKDIR /app
-COPY upppi/. .
+COPY . .
 RUN mkdir -p common
 RUN mkdir -p log
 
-COPY common/. common
-COPY upppi/requirements.txt .
+COPY tools.py common
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 CMD ["python", "upppi.py"]

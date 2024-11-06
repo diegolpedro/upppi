@@ -1,0 +1,4 @@
+ppi-client==1.2.1
+azure-storage-blob==12.22.0
+azure-identity==1.17.1
+azure-keyvault-secrets==4.8.0

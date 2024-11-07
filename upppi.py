@@ -95,6 +95,7 @@ def onmarketdata(data):
         # Se utiliza un buffer de aprox ~5min
         msgBuffer = msgBuffer + msgLine
         # print(msg['Date'], len(msgBuffer))
+
         if len(msgBuffer) > (2560*10):
             # Append text to the append blob
             blob_client.append_block(msgBuffer)
@@ -124,6 +125,8 @@ if __name__ == '__main__':
     try:
         ppi.realtime.start_connections()
     except Exception as e:
+        blob_client.append_block(msgBuffer)     # Si queda algo en el buffer
+                                                # almacenrlo para no perderlo.
         logger.error(f"Ocurrió un error: {e}")
         sys.exit(1)
 
